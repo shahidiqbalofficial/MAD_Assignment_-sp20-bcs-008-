@@ -1,130 +1,52 @@
-import { StyleSheet, View } from "react-native";
+import React from 'react';
+import { Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { FlatList } from 'react-native';
+/**
+ * show images in flat list react native
+ * 
+ */
+export default function StudentRecord() {
+  const students = [
+    { name: 'pic', id: 1, image: require('../assets/adaptive-icon.png') },
+    { name: 'logo', id: 2, image: require('../assets/favicon.png') },
+    { name: 'photo', id: 3, image: require('../assets/favicon.png') },
+    { name: 'imge', id: 4, image: require('../assets/favicon.png') },
+  ]
 
-export default function App() {
   return (
-    <View style={styles.container}>
-      <View style={styles.Box}>
-        <View style={styles.black} />
-        <View style={styles.white} />
+    <FlatList
+      data={students}
+      renderItem={({ item }) => {
+        return (
+          <TouchableOpacity style={styles.ImageClass} activeOpacity={.5} onPress={cl = () => {
+            console.log(item.name);
+          }}>
 
-        <View style={styles.black} />
-        <View style={styles.white} />
+            <Image source={item.image}>
 
-        <View style={styles.black} />
-        <View style={styles.white} />
+            </Image>
+            <Text style={styles.textStyle}>{item.name}</Text>
 
-        <View style={styles.black} />
-        <View style={styles.white} />
+          </TouchableOpacity>
 
-        <View style={styles.white} />
-        <View style={styles.black} />
 
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-      </View>
-    </View>
-  );
+        )
+      }}
+      keyExtractor={item => item.id}
+    />
+  )
 }
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "dodgerblue",
+  textStyle: {
+    fontSize: 14,
   },
-  Box: {
-    height: 480,
-    width: 480,
-    backgroundColor: "grey",
-    borderStyle: "solid",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignContent: "flex-start",
-  },
-  black: {
-    backgroundColor: "black",
-    width: 60,
-    height: 60,
-  },
-  white: {
-    backgroundColor: "white",
-    width: 60,
-    height: 60,
-  },
+  ImageClass:
+  {
+    width: 100,
+    
+    height: 44
+
+  }
 });
