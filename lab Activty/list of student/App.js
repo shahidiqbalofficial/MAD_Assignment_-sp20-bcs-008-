@@ -1,130 +1,44 @@
-import { StyleSheet, View } from "react-native";
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.Box}>
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.black} />
-        <View style={styles.white} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-        <View style={styles.white} />
-        <View style={styles.black} />
-
-        <View style={styles.white} />
-        <View style={styles.black} />
-      </View>
-    </View>
-  );
-}
+import React from 'react';
+import { SectionList, StyleSheet, Text, View } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "dodgerblue",
+   flex: 1,
+   paddingTop: 22
   },
-  Box: {
-    height: 480,
-    width: 480,
-    backgroundColor: "grey",
-    borderStyle: "solid",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignContent: "flex-start",
+  sectionHeader: {
+    paddingTop: 2,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 2,
+    fontSize: 14,
+    fontWeight: 'bold',
+    backgroundColor: 'rgba(247,247,247,1.0)',
   },
-  black: {
-    backgroundColor: "black",
-    width: 60,
-    height: 60,
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
   },
-  white: {
-    backgroundColor: "white",
-    width: 60,
-    height: 60,
-  },
-});
+})
+
+const SectionListBasics = () => {
+    return (
+      <View style={styles.container}>
+        <SectionList
+          sections={[
+            {title: 'Name which start from (F)', data: ['farhan', 'faheem', 'faseem', 'fatima', 'fasil']},
+            {title: 'Name which start from (H)', data: ['hanzala', 'haris']},
+            {title: 'Name which start from (S)', data: ['salabat', 'saklain', 'shahid']},
+            
+            
+          ]}
+          renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+          renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+          keyExtractor={(item, index) => `basicListEntry-${item.title}`}
+        />
+      </View>
+    );
+}
+
+export default SectionListBasics;
